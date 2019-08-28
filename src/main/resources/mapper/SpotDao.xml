@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengqun.fengqunspotticket.dao.SpotDao">
+
+
+    <select id="findBySpotName"  parameterType="String" resultType="com.fengqun.fengqunspotticket.entity.Spot">
+
+
+        select id,spotName,spotAddress,openingHours,profile,ct,headImage from t_spot where spotName=#{spotName}
+
+    </select>
+    <select id="findById"  parameterType="long" resultType="com.fengqun.fengqunspotticket.entity.Spot">
+
+
+        select id,spotName,spotAddress,openingHours,profile,ct,headImage from t_spot where id=#{id}
+
+    </select>
+    <update id="updateSpot" parameterType="com.fengqun.fengqunspotticket.entity.Spot" >
+        update t_spot
+        set id=#{id},spotName=#{spotName},spotAddress=#{spotAddress},openingHours=#{openingHours},profile=#{profile},ct=#{ct},headImage=#{headImage}
+        where id = #{id}
+
+    </update>
+
+    <delete id="deleteById" parameterType="long">
+        delete  from t_spot where  id=#{Id}
+
+
+
+    </delete>
+    <insert id="insertSpot" parameterType="com.fengqun.fengqunspotticket.entity.Spot">
+        insert  into  t_spot(spotName,spotAddress,openingHours,profile,ct,headImage)values (#{spotName},#{spotAddress},#{openingHours},#{profile},#{ct},#{headImage})
+
+    </insert>
+    <select id="findALLSpot"  resultType="com.fengqun.fengqunspotticket.entity.Spot">
+        select id,spotName,spotAddress,openingHours,profile,ct,headImage from t_spot
+
+
+
+    </select>
+</mapper>

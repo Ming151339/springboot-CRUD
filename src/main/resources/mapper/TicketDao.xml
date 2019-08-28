@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengqun.fengqunspotticket.dao.TicketDao">
+
+
+    <select id="findById"  parameterType="long" resultType="com.fengqun.fengqunspotticket.entity.Ticket">
+
+
+    select id,spotId,ticketName,price,originalPrice,ticketType,ct
+    from t_ticket
+    where id=#{id}
+
+</select>
+    <update id="updateTicket" parameterType="com.fengqun.fengqunspotticket.entity.Ticket" >
+        update t_ticket
+        set id=#{id},spotId=#{spotId},ticketName=#{ticketName},price=#{price},originalPrice=#{originalPrice},ticketType=#{ticketType},ct=#{ct}
+        where id = #{id}
+
+    </update>
+
+    <insert id="addTicket" parameterType="com.fengqun.fengqunspotticket.entity.Ticket">
+        insert  into  t_ticket(spotId,ticketName,price,originalPrice,ticketType,ct)values (#{spotId},#{ticketName},#{price},#{originalPrice},#{ticketType},#{ct})
+
+    </insert>
+
+    <delete id="deleteById" parameterType="long">
+        delete
+        from t_ticket
+        where  id=#{id}
+
+    </delete>
+
+    <select id="findALLTicket"  resultType="com.fengqun.fengqunspotticket.entity.Ticket">
+        select id,spotId,ticketName,price,originalPrice,ticketType,ct
+        from t_ticket
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengqun.fengqunspotticket.dao.OrderDao">
+
+
+    <select id="findById"  parameterType="long" resultType="com.fengqun.fengqunspotticket.entity.Order">
+
+
+        select id,orderNumber,memberId,spotId,orderPrice,state,paycode,faceFeature,ct
+        from t_order
+        where id=#{id}
+
+    </select>
+    <select id="findAllPaidOrder"  resultType="com.fengqun.fengqunspotticket.entity.Order">
+        select id,orderNumber,memberId,spotId,orderPrice,state,paycode,faceFeature,ct
+        from t_order
+        where  state=1  and memberId=#{memberId}
+
+
+
+    </select>
+    <select id="findAllUnpaidOrder"  resultType="com.fengqun.fengqunspotticket.entity.Order">
+        select id,orderNumber,memberId,spotId,orderPrice,state,paycode,faceFeature,ct
+        from t_order
+        where  state=0 and memberId=#{memberId}
+
+
+
+    </select>
+</mapper>
