@@ -12,7 +12,7 @@ public interface TicketDao {
     void addTicket(Ticket ticket);
     void  deleteById(long id);
     void updateTicket(Ticket ticket);
-    //查询详情和修改前回显数据fcvcv
+    //查询详情和修改前回显数据fcvcvdsdsd
     Ticket findById(long id);
 
 
